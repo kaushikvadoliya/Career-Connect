@@ -40,16 +40,7 @@ const ReviewAndSubmit = () => {
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>Skills : </Text>
-          <View style={styles.skillsContainer}>
-            {data?.skills.map((item, index) => {
-              return (
-                <View key={index} style={styles.skillContainer}>
-                  <View style={styles.dotStyle} />
-                  <Text>{item}</Text>
-                </View>
-              );
-            })}
-          </View>
+          <Text style={styles.text}>{data.skills.join(' , ')}</Text>
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>PortFilio URL : </Text>

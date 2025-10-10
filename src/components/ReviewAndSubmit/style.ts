@@ -26,22 +26,6 @@ const styles = StyleSheet.create({
     color: 'dimgrey',
     fontWeight: '500',
   },
-  skillsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 14,
-  },
-  dotStyle: {
-    backgroundColor: 'dimgrey',
-    height: 8,
-    width: 8,
-    borderRadius: 4,
-  },
-  skillContainer: {
-    flexDirection: 'row',
-    gap: 3,
-    alignItems: 'center',
-  },
   bioText: {
     fontSize: 16,
     color: 'dimgrey',
