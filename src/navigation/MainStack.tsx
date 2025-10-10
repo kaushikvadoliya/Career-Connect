@@ -1,0 +1,15 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FormScreen from '../screens/FormScreen';
+
+const Stack = createNativeStackNavigator();
+
+const MainStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Stack" component={FormScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export default MainStack;
