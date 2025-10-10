@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import styles from './style';
-import { Control, Controller, RegisterOptions } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+} from 'react-hook-form';
 import { Text } from 'react-native';
 
 export const Qualification = [
@@ -13,13 +19,17 @@ export const Qualification = [
   { value: 'Post Graduate' },
 ];
 
-type Props = {
-  control: Control<any>;
-  name: string;
-  rules: RegisterOptions;
+type Props<T extends FieldValues> = {
+  control: Control<T>;
+  name: FieldPath<T>;
+  rules: RegisterOptions<T, FieldPath<T>>;
 };
 
-const DropdownComponent = ({ name, control, rules }: Props) => {
+const DropdownComponent = <T extends FieldValues>({
+  name,
+  control,
+  rules,
+}: Props<T>) => {
   const [isFocus, setIsFocus] = useState(false);
 
   return (

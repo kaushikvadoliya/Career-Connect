@@ -1,17 +1,28 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { Text, TextInput } from 'react-native';
-import { Control, Controller, RegisterOptions } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+} from 'react-hook-form';
 import { TextInputProps, View } from 'react-native';
 import styles from './style';
 
-type Props = {
-  name: string;
-  control: Control<any>;
-  rules?: RegisterOptions;
+type Props<T extends FieldValues> = {
+  name: FieldPath<T>;
+  control: Control<T>;
+  rules?: RegisterOptions<T, FieldPath<T>>;
 } & TextInputProps;
 
-const InputField = ({ control, name, rules, ...rest }: Props) => {
+const InputField = <T extends FieldValues>({
+  control,
+  name,
+  rules,
+  ...rest
+}: Props<T>) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (

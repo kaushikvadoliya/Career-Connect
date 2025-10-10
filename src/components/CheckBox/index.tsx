@@ -1,17 +1,27 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import styles from './style';
-import { Controller, Control, RegisterOptions } from 'react-hook-form';
+import {
+  Controller,
+  Control,
+  RegisterOptions,
+  FieldPath,
+  FieldValues,
+} from 'react-hook-form';
 
 const skills: string[] = ['React-Native', 'TypeScript', 'React-js', 'Node-js'];
 
-type CheckBoxProps = {
-  control: Control<any>;
-  name: string;
-  rules: RegisterOptions;
+type CheckBoxProps<T extends FieldValues> = {
+  control: Control<T>;
+  name: FieldPath<T>;
+  rules?: RegisterOptions<T, FieldPath<T>>;
 };
 
-const CheckBox = ({ control, name, rules }: CheckBoxProps) => {
+const CheckBox = <T extends FieldValues>({
+  control,
+  name,
+  rules,
+}: CheckBoxProps<T>) => {
   return (
     <Controller
       control={control}

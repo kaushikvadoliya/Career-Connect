@@ -16,7 +16,7 @@ const EducationAndExperience = () => {
       </Text>
       <View style={styles.container}>
         <Text style={styles.text}>Enter the Education Qualification :</Text>
-        <DropdownComponent
+        <DropdownComponent<EducationDetails>
           control={control}
           rules={{
             required: 'select the highest qualification',
@@ -25,7 +25,7 @@ const EducationAndExperience = () => {
         />
         <Text style={styles.text}>Enter the Years of Experience :</Text>
         <View>
-          <InputField
+          <InputField<EducationDetails>
             control={control}
             placeholder="experience"
             rules={{
@@ -38,7 +38,7 @@ const EducationAndExperience = () => {
             {...register('experience')}
           />
         </View>
-        <CheckBox
+        <CheckBox<EducationDetails>
           control={control}
           rules={{
             required: 'select the skills',

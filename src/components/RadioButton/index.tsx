@@ -1,17 +1,29 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { Controller, Control, RegisterOptions } from 'react-hook-form';
+import {
+  Controller,
+  Control,
+  RegisterOptions,
+  FieldPath,
+  FieldValues,
+} from 'react-hook-form';
 import styles from './style';
 
-type Props = {
-  control: Control<any>;
-  name: string;
+type Props<T extends FieldValues> = {
+  control: Control<T>;
+  name: FieldPath<T>;
   array: string[];
   text: string;
-  rules: RegisterOptions;
+  rules: RegisterOptions<T, FieldPath<T>>;
 };
 
-const RadioButton = ({ control, name, array, text, rules }: Props) => {
+const RadioButton = <T extends FieldValues>({
+  control,
+  name,
+  array,
+  text,
+  rules,
+}: Props<T>) => {
   return (
     <Controller
       control={control}

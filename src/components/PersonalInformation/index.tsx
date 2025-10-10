@@ -17,7 +17,7 @@ const PersonalInformation = () => {
       <View style={styles.inputContainer}>
         <Text style={styles.text}>Enter the FullName :</Text>
         <View>
-          <InputField
+          <InputField<PersonalDetails>
             control={control}
             placeholder="FullName"
             rules={{
@@ -32,7 +32,7 @@ const PersonalInformation = () => {
         </View>
         <Text style={styles.text}>Enter the Email :</Text>
         <View>
-          <InputField
+          <InputField<PersonalDetails>
             control={control}
             placeholder="Email"
             rules={{
@@ -47,7 +47,7 @@ const PersonalInformation = () => {
         </View>
         <Text style={styles.text}>Enter the Phone Number :</Text>
         <View>
-          <InputField
+          <InputField<PersonalDetails>
             keyboardType="numeric"
             control={control}
             placeholder="Phone Number"
@@ -62,7 +62,7 @@ const PersonalInformation = () => {
           />
         </View>
       </View>
-      <RadioButton
+      <RadioButton<PersonalDetails>
         control={control}
         array={['male', 'female', 'other']}
         text="Choose the Gender : "

@@ -16,7 +16,7 @@ const PortFolio = () => {
       <View style={styles.inputContainer}>
         <Text style={styles.text}>Enter the PortFolio URL :</Text>
         <View>
-          <InputField
+          <InputField<UserDetails>
             control={control}
             placeholder="Portfolio URL"
             rules={{
@@ -30,7 +30,7 @@ const PortFolio = () => {
             {...register('portfolio')}
           />
         </View>
-        <RadioButton
+        <RadioButton<UserDetails>
           control={control}
           text="Enter the Job Type"
           array={['Remote', 'On-Site', 'Hybrid']}
@@ -40,7 +40,7 @@ const PortFolio = () => {
           }}
         />
         <Text style={styles.text}>Enter the Bio Details :</Text>
-        <InputField
+        <InputField<UserDetails>
           style={styles.bioContainer}
           control={control}
           placeholder="Bio Details"
