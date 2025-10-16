@@ -3,10 +3,15 @@ import React from 'react';
 import styles from './style';
 import { useFormContext } from 'react-hook-form';
 import { UserDetails } from '../../types/userType';
+import { AuthStore } from '../../Zustand/Store/AuthStore';
 
 const ReviewAndSubmit = () => {
   const { getValues } = useFormContext<UserDetails>();
   const data = getValues();
+  if (data) {
+    const { setUser } = AuthStore();
+    setUser(data);
+  }
 
   return (
     <View>
