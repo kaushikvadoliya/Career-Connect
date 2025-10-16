@@ -24,6 +24,8 @@ const MainStack = () => {
     );
   }
 
+  console.log(user);
+
   if (loading) {
     return (
       <SafeAreaView
@@ -35,7 +37,7 @@ const MainStack = () => {
   }
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {user ? (
+      {user !== null ? (
         <Stack.Screen name="AuthStack" component={AuthStack} />
       ) : (
         <Stack.Screen name="HomeStack" component={HomeStack} />

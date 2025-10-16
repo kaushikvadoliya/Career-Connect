@@ -5,7 +5,7 @@ import PortFolio from '../PortFolio';
 import ReviewAndSubmit from '../ReviewAndSubmit';
 import { UserDetails } from '../../types/userType';
 import { useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import Button from '../Button';
 import styles from './style';
 import { AuthStore } from '../../Zustand/Store/AuthStore';
@@ -52,6 +52,8 @@ const Stepper = () => {
   const onSave = () => {
     if (user !== null) {
       navigation.navigate('HomeStack', { screen: 'Home' });
+    } else {
+      Alert.alert('fill all the details');
     }
   };
 
