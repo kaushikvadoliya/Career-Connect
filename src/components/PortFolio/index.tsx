@@ -8,6 +8,7 @@ import { UserDetails } from '../../types/userType';
 
 const PortFolio = () => {
   const { control, register } = useFormContext<UserDetails>();
+
   return (
     <View>
       <Text style={styles.headerText}>
