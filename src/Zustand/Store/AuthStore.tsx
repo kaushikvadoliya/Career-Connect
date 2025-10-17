@@ -23,6 +23,8 @@ export const AuthStore = create<AuthStoreType>(set => ({
       const userExist = await AsyncStorage.getItem('USER');
       if (userExist) {
         set({ loading: false, user: JSON.parse(userExist) });
+      } else {
+        set({ loading: false, user: null });
       }
     } catch (err: any) {
       set({ loading: false, error: err });
@@ -35,7 +37,6 @@ export const AuthStore = create<AuthStoreType>(set => ({
     try {
       await AsyncStorage.setItem('USER', JSON.stringify(user));
       set({ user: user, loading: false });
-      set;
     } catch (err: any) {
       set({ error: err, loading: false });
     }

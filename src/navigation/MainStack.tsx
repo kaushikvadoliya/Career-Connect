@@ -1,18 +1,20 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthStack from './AuthStack';
-import HomeStack from './HomeStack';
 import { AuthStore } from '../Zustand/Store/AuthStore';
 import { ActivityIndicator, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import HomeStack from './HomeStack';
 
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
   const { user, fetchUser, error, loading } = AuthStore();
 
-  fetchUser();
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   if (error) {
     return (

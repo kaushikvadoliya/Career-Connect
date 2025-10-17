@@ -5,11 +5,13 @@ import PortFolio from '../PortFolio';
 import ReviewAndSubmit from '../ReviewAndSubmit';
 import { UserDetails } from '../../types/userType';
 import { useState } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Button from '../Button';
 import styles from './style';
-import { AuthStore } from '../../Zustand/Store/AuthStore';
-import { useNavigation } from '@react-navigation/native';
+
+type Props = {
+  onSave: () => void;
+};
 
 const steps = [
   {
@@ -34,11 +36,9 @@ const steps = [
   },
 ];
 
-const Stepper = () => {
-  const { user } = AuthStore();
+const Stepper = ({ onSave }: Props) => {
   const { handleSubmit } = useFormContext<UserDetails>();
   const [activeStep, setActiveStep] = useState<number>(0);
-  const navigation = useNavigation<any>();
 
   const onSubmit = (data: UserDetails) => {
     setActiveStep(activeStep + 1);
@@ -48,15 +48,6 @@ const Stepper = () => {
   const backPage = () => {
     setActiveStep(activeStep - 1);
   };
-
-  const onSave = () => {
-    if (user !== null) {
-      navigation.navigate('HomeStack', { screen: 'Home' });
-    } else {
-      Alert.alert('fill all the details');
-    }
-  };
-
   return (
     <>
       <View style={styles.mainContainer}>

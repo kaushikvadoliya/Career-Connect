@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FormProvider, useForm } from 'react-hook-form';
 import { UserDetails } from '../../types/userType';
 import Stepper from '../../components/Stepper';
+import { useNavigation } from '@react-navigation/native';
 
 const FormScreen = () => {
   const methods = useForm<UserDetails>({
@@ -21,10 +22,14 @@ const FormScreen = () => {
       portfolio: '',
     },
   });
+
+  const navigation = useNavigation<any>();
   return (
     <FormProvider {...methods}>
       <SafeAreaView style={styles.container}>
-        <Stepper />
+        <Stepper
+          onSave={() => navigation.navigate('HomeStack', { screen: 'Home' })}
+        />
       </SafeAreaView>
     </FormProvider>
   );
