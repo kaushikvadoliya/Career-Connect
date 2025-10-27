@@ -1,13 +1,37 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FormScreen from '../screens/FormScreen';
+import LineChartScreen from '../screens/LineChartScreen';
+import { useNavigation } from '@react-navigation/native';
+import PieChartScreen from '../screens/PieChartScreen';
+import { Button } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
+  const navigation = useNavigation<any>();
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Stack" component={FormScreen} />
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{
+          headerTitle: 'LineChart',
+          headerRight: () => (
+            <Button
+              title="Next"
+              onPress={() => navigation.navigate('PieChart')}
+            />
+          ),
+        }}
+        name="LineChart"
+        component={LineChartScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerTitle: 'PieChart',
+        }}
+        name="PieChart"
+        component={PieChartScreen}
+      />
     </Stack.Navigator>
   );
 };

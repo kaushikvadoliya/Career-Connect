@@ -1,9 +1,9 @@
-import { User } from '../screens/PersonalInformationScreen';
+import { UserDetails } from '../types/userType';
 
 export type StackParams = {
   PersonalInformation: undefined;
   EducationAndExperience: {
-    userInfo: User;
+    userInfo: UserDetails;
   };
   PortFolio: undefined;
   Review: undefined;
